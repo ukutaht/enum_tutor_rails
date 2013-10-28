@@ -13,9 +13,12 @@
     %ul.nav.navbar-nav.navbar-right
       - if authenticated?
         %li
-          = current_user.name
+          %a
+            Hello, 
+            = current_user.name
         %li
-          %img{:src => "#{current_user.gravatar}", :height => "25", :width => "25"}
+          %a
+            %img{:src => "#{current_user.gravatar}", :height => "25", :width => "25"}
 
         %li
           = link_to 'Sign Out', signout_path
