@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  challenge_id: 1
+  user_id: 1
+  attemp_text: MyText
+  passed: false
+
+two:
+  challenge_id: 1
+  user_id: 1
+  attemp_text: MyText
+  passed: false
