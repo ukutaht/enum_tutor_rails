@@ -1,0 +1,16 @@
+.col-xs-3.col-sm-3.col-md-4.col-lg-4
+  .panel.panel-primary
+    .panel-heading
+      %h3.panel-title
+        Challenges
+    .panel-body
+      .progress
+        .progress-bar.progress-bar-success{'role' => 'progressbar', 'aria-valuemin' =>  '0', 'aria-valuemax' => '100', 'style' => "width:#{current_user.progress}%;"}
+          .span.progress-text
+            = current_user.progress
+            \% Complete
+      .list-group#challenge-list
+        - @challenges.each do |challenge|
+          = link_to challenge.name, challenge, :class => 'list-group-item'
+          - if current_user.completed?(challenge)
+            %span.glyphicon.glyphicon-ok

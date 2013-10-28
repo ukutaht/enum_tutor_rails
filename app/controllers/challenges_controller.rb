@@ -8,6 +8,8 @@ class ChallengesController < ApplicationController
   end
 
   def show
+    @challenges = Challenge.all
+    @challenge = Challenge.find(params[:id])
   end
 
   private

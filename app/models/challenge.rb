@@ -11,7 +11,21 @@ class Challenge < ActiveRecord::Base
   validate :check_initial_data
   validate :check_expected_output
 
+  after_create :init_order
+
   default_scope order('challenge_order')
+
+
+  private
+
+  def init_order
+    self.challenge_order ||=  self.id
+    self.save
+  end
+
+  def evaluated_output
+    eval expected_output
+  end
 
 
   def check_initial_data
@@ -24,7 +38,7 @@ class Challenge < ActiveRecord::Base
 
   def check_expected_output
     begin
-      eval_expected_output
+      evaluated_output
     rescue Exception => e
       errors.add(:expected_output, "doesn't evaluate to a ruby object")
     end

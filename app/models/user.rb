@@ -16,4 +16,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def completed?(challenge)
+    completed_challenges.include?(challenge)
+  end
+
+  def progress
+    ((completed_challenges.count / Challenge.all.count.to_f)*100).to_i
+  end
+
+  private
+
+  def completed_challenges
+    attempts.where(:passed => true).count(:group => :challenge).keys
+  end
+
 end
