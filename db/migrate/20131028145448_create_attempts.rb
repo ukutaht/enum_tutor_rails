@@ -3,8 +3,8 @@ class CreateAttempts < ActiveRecord::Migration
     create_table :attempts do |t|
       t.integer :challenge_id
       t.integer :user_id
-      t.text :attempt_text
-      t.boolean :passed
+      t.text :attempt_text, null: false
+      t.boolean :passed, default: false
 
       t.timestamps
     end
