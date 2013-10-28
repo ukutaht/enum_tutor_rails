@@ -1,7 +1,7 @@
 module SessionsHelper
   
   def current_user
-    @current_user ||= User.find_by_socrates_id(session[:user_attributes].id)
+    @current_user ||= User.find_by_socrates_id(session[:user_attributes].try(:id))
   end
 
   def authenticated?

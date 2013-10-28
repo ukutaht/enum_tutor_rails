@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     user = User.from_auth(user_attributes)
     session[:oauth_token] = token_as_hash(token)
     
-    redirect_to root_path
+    redirect_to challenges_path
   end
 
 end

@@ -11,6 +11,9 @@ class Challenge < ActiveRecord::Base
   validate :check_initial_data
   validate :check_expected_output
 
+  default_scope order('challenge_order')
+
+
   def check_initial_data
     begin
       eval initial_data
