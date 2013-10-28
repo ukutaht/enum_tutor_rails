@@ -1,0 +1,24 @@
+%nav.navbar.navbar-default{:role => :navigation}
+  
+  .navbar-header
+    %button.navbar-toggle{:type => "button",:data => {:toggle => "collapse",     :target => ".navbar-ex1-collapse"} }
+      %span.sr-only
+      %span.icon-bar 
+      %span.icon-bar 
+      %span.icon-bar
+    = link_to "Enumerable Tutor", root_path, :class => "navbar-brand"
+  
+  
+  .collapse.navbar-collapse.navbar-ex1-collapse
+    %ul.nav.navbar-nav.navbar-right
+      - if authenticated?
+        %li
+          = current_user.name
+        %li
+          %img{:src => "#{current_user.gravatar}", :height => "25", :width => "25"}
+
+        %li
+          = link_to 'Sign Out', signout_path
+      - else 
+        %li
+          = link_to 'Sign In', signin_path

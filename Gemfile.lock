@@ -43,6 +43,13 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    haml (4.0.3)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -127,6 +134,7 @@ PLATFORMS
 
 DEPENDENCIES
   coderay
+  haml-rails
   jquery-rails
   nokogiri
   oauth2 (~> 0.8.0)
