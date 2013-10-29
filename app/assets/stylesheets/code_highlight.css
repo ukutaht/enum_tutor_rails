@@ -1,0 +1,55 @@
+.CodeRay pre  {
+  background: #303030;
+  color: #fff;
+  font-family: monospace;
+  border: 1px solid black;
+  padding: 3px 5px;
+  overflow: auto;
+  font-size: 12px;
+  margin: 12px 0;
+}
+ 
+.CodeRay pre {
+  margin: 20px 10px;
+}
+ 
+.CodeRay .code { width: 100% }
+.CodeRay .code pre { overflow: auto }
+ 
+.CodeRay .comment  { color:#5F5A60;}
+.CodeRay .class { color:#9B859D; background: transparent; }
+.CodeRay .constant { color:#9B859D; background: transparent; }
+.CodeRay .class-variable { color:#7587A6 }
+.CodeRay .function { color: #ffffff; background: transparent; }
+.CodeRay .global-variable { color:#9a859c; background: transparent; }
+.CodeRay .integer  { color:#CF6A4C; background: transparent; }
+.CodeRay .instance-variable { color:#7587A6 ; background: transparent; }
+.CodeRay .local-variable { color: #eedd82; background: transparent; }
+.CodeRay .reserved, .keyword  { color:#CDA869; background: transparent; }
+ 
+.CodeRay .regexp { color:#E9C062 }
+ 
+.CodeRay .string { color: #8F9D6A; }
+ 
+ 
+.CodeRay .symbol { color:#CF6A4C }
+ 
+
+pre.ruby {
+  background: #303030;
+  color: #fff;
+  font-family: monospace;
+  font-size: 0.75em;
+}
+
+/* @group Ruby keyword styles */
+.ruby-constant   { color: #7fffd4; background: transparent; }
+.ruby-keyword    { color:#CDA869; background: transparent; }
+.ruby-ivar       { color:#7587A6 ; background: transparent; }
+.ruby-operator   { color: #CDA869; background: transparent; }
+.ruby-identifier { color: #ffffff; background: transparent; }
+.ruby-node       { color: #ffa07a; background: transparent; }
+.ruby-comment   { color:#5F5A60; font-weight: bold; background: transparent; }
+.ruby-regexp     { color:#E9C062; background: transparent; }
+.ruby-value      { color:#CF6A4C; background: transparent; }
+

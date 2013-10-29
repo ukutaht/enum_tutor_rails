@@ -1,48 +1,32 @@
+.challenge-header
+  %a{:href => '#doc'}
+    %span#doc-click
+      Documentation
+  %span.problem-statement.lead
+    = @challenge.problem_statement
 
+#docs= find_and_preserve @challenge.doc.html.html_safe
 
-<nav id = "challenge-top" class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
-      <ul class="nav nav-tabs">
-        <li class="active" id="challenge"><a href="#">Challenge</a></li>
-        <li id="attempts"><a href="#">Your Attemtps</a></li>
-     </ul>
-</nav>
-<div id="challenge-header">
-  <a href="#showdoc">
-    <span id="doc-click">Documentation</span>
-  </a>
-  <span class="problem-statement lead"><%= @current_challenge.problem_statement %></span>
-</div> <!-- /challenge-header -->
-<div id="docs">
-  <%= @current_challenge.hint.html %>
-</div> <!-- /docs -->
-<div class="panel panel-danger">
-  <div class="panel-heading">
-    <h3 class="panel-title console-header">Console</h3>
-  </div> <!-- /console-panel-heading -->
-  <div class="panel-body" id="editor-body">
-    <div id="editor"><%= @current_challenge.initial_data %></div>
-    <script src="/js/src/ace.js" type="text/javascript" charset="utf-8"></script>
-    
-    <script>
+.panel.panel-danger.editor-panel
+  .panel-heading
+    %h3.panel-title.console-header
+      Console
+  .panel-body#editor-body
+    #editor= @challenge.initial_data
+    :javascript
       var editor = ace.edit("editor");
       editor.getSession().setMode("ace/mode/ruby");
       editor.setTheme("ace/theme/twilight");
-    </script>
 
-  </div>
-</div> <!-- /console-panel -->
-<form action=<%= @current_challenge.id %> method='POST' id='run-code'>
-<input type='hidden' name='answer' id='user-code'/>
-<input type='submit' class="btn btn-large btn-primary" id="run" value='Run it!'/>
-<form>
-<div id="output-wrapper" class="panel panel-<%= @attempt ? @attempt.passed ? "success" : "danger" : "info" %>">
-  <div class="panel-heading">
-    <h3 class="panel-title">Output</h3>
-  </div>
-  <div class="panel-body" id="output">
-    <% if @user_output %>
-        <%# CodeRay.scan(@user_output.to_s, :ruby).div(css: :class) %>
-        <p>=> <%= @user_output.inspect %></p>
-    <% end %>
-  </div>
-</div>
+= form_tag attempt_challenge_path do
+  = hidden_field_tag 'attempt[attempt_text]'
+  = submit_tag "Run it", :class => 'button btn btn-large btn-primary', :id => 'run-it'
+
+.output-wrapper.panel{:class => "panel-#{@attempt ? @attempt.passed ? "success" : "danger" : "info"}"}
+  .panel-heading
+    %h3.panel-title
+      Output
+  .panel-body#output
+    - if @user_output
+      %p
+        = @user_output.inspect

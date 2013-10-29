@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     ((completed_challenges.count / Challenge.all.count.to_f)*100).to_i
   end
 
+  def attempts_for(id)
+    attempts.where(:challenge_id => id)
+  end
+
   private
 
   def completed_challenges

@@ -5,4 +5,7 @@ class Attempt < ActiveRecord::Base
   belongs_to :user
 
   validates :attempt_text, presence: true
+
+
+  
 end

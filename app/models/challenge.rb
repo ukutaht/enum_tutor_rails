@@ -15,16 +15,14 @@ class Challenge < ActiveRecord::Base
 
   default_scope order('challenge_order')
 
-
+  def evaluated_output
+    eval expected_output
+  end
   private
 
   def init_order
     self.challenge_order ||=  self.id
     self.save
-  end
-
-  def evaluated_output
-    eval expected_output
   end
 
 

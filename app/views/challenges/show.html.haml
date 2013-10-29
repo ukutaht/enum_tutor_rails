@@ -1,3 +1,21 @@
 .row
   = render 'sidebar'
-  = render @challenge
+  %nav#challenge-top.col-xs-9.col-sm-9.col-md-8.col-lg-8
+    %ul.nav.nav-tabs#challenge-nav
+      %li.active
+        %a{:href => '#challenge'}
+          Challenge
+      %li
+        %a{:href => '#attempts'}
+          Your Attempts
+  .col-xs-9.col-sm-9.col-md-8.col-lg-8.tab-content.challenge-area
+    .tab-pane.active#challenge
+      = render @challenge
+    .tab-pane#attempts
+      %ul.attempt-list
+        - current_user.attempts_for(@challenge.id).each do |attempt|
+          %h5.time-ago
+            = time_ago_in_words(attempt.created_at)
+            ago
+          %li.attempt-list-item= find_and_preserve CodeRay.scan(attempt.attempt_text, :ruby).div(css: :class).html_safe
+          
