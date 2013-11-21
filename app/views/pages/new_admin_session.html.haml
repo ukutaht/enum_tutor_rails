@@ -1,0 +1,6 @@
+= form_tag do
+  .form-group
+    = label_tag :password
+    = password_field_tag :password,nil, class: 'form-control'
+    %br/ 
+    = submit_tag "Enter", class: "btn btn-primary btn-sm btn-block"

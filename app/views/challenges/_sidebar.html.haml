@@ -11,6 +11,7 @@
             \% Complete
       .list-group#challenge-list
         - @challenges.each do |challenge|
-          = link_to challenge.name, challenge, :class => 'list-group-item'
-          - if current_user.completed?(challenge)
-            %span.glyphicon.glyphicon-ok
+          %li.list-group-item
+            = link_to challenge.name, challenge
+            - if current_user.completed?(challenge)
+              %span.glyphicon.glyphicon-ok

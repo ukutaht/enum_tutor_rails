@@ -18,6 +18,7 @@ class Challenge < ActiveRecord::Base
   def evaluated_output
     eval expected_output
   end
+
   private
 
   def init_order
