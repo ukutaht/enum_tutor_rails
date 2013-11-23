@@ -1,0 +1,35 @@
+.well.col-xs-9.col-sm9.colmd-8.col-lg-8
+  - if @challenge.errors.messages.any?
+    - @challenge.errors.full_messages.each do |msg|
+      .alert.alert-danger= msg
+  - if @challenge.doc && @challenge.doc.errors.messages.any?
+    .alert.alert-danger= @challenge.doc.errors.messages.first
+  
+  = form_for [:admin, @challenge], html: { role: "form" } do |f|
+    
+    .form-group
+      = f.label :name
+      = f.text_field :name, class: "form-control"
+    
+    .form-group
+      = f.label :problem_statement
+      = f.text_area :problem_statement, class: "form-control"
+    
+    .form-group
+      = f.label :initial_data
+      %p.help-block 
+        Enter the array or hash you wish the user to work with. This line will be injected to the
+        code editor as it is , so assigning it to a variable with a descriptive name is not a bad idea
+      = f.text_field :initial_data, class: "form-control"
+    
+    .form-group
+      = f.label :expected_output
+      %p.help-block 
+        Run code in irb and copy the return value here.
+      = f.text_field :expected_output, class: "form-control"
+      
+    = fields_for @challenge.doc do |d|
+      .form-group
+        = d.label :method      
+        = d.text_field :method, class: "form-control"
+    = f.submit nil, class: "btn btn-primary"

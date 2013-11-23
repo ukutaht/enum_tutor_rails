@@ -2,11 +2,11 @@ EnumTutor::Application.routes.draw do
 
 
   namespace :admin do
-    post '/login', :to => 'pages#create_admin_session'
+    post '/login', :to => 'base#create_admin_session'
 
     resources :challenges
     
-    root :to => 'pages#new_admin_session'
+    root :to => 'base#new_admin_session'
   end
 
   resources :challenges, :only => [:index, :show] do

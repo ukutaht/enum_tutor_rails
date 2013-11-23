@@ -1,0 +1,20 @@
+%table.table.table-hover#sortable
+  %thead
+    %tr 
+      %th Challenge
+      %th Attempts
+      %th Passed
+      %th
+  %tbody
+    - @challenges.each do |challenge|
+      %tr{:data => {:challenge_order => challenge.challenge_order}}
+        %td
+          = link_to challenge.name, challenge_path(challenge)
+        %td 
+          = challenge.attempts.count
+        %td 
+          = challenge.passed_percentage
+        %td 
+          = link_to "Edit", edit_admin_challenge_path(challenge), class: 'btn btn-primary btn-sm'
+
+= link_to "New Challenge", new_admin_challenge_path

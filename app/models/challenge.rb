@@ -19,6 +19,10 @@ class Challenge < ActiveRecord::Base
     eval expected_output
   end
 
+  def passed_percentage
+    ((attempts.where(passed: true).count / attempts.count.to_f) * 100).to_i rescue 0
+  end
+
   private
 
   def init_order

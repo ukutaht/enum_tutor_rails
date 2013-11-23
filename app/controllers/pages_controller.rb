@@ -1,9 +1,8 @@
 class PagesController < ApplicationController
+  include SessionsHelper
   
   def welcome
-  end
-
-  def new_admin_session
+    redirect_to challenges_path if authenticated?
   end
 
 end

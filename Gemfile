@@ -16,10 +16,9 @@ group :development do
 end
 
 gem 'jquery-rails'
-
 gem 'nokogiri'
 gem 'coderay'
-
+gem 'sandboxed'
 gem 'oauth2', '~>0.8.0'
 gem 'omniauth'
 gem 'omniauth-oauth2'

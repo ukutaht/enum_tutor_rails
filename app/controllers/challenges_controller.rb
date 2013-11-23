@@ -18,10 +18,9 @@ class ChallengesController < ApplicationController
     @challenges = Challenge.all
     @challenge = Challenge.find(params[:id])
 
-    @user_output = evaluate(params[:attempt])
+    @user_output = evaluate(params[:attempt][:attempt_text])
     params[:attempt][:passed] = @user_output == @challenge.evaluated_output
     @attempt = current_user.attempts.create(params[:attempt])
-
     @challenge.attempts << @attempt
 
     render 'show'
