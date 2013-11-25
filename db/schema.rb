@@ -16,18 +16,18 @@ ActiveRecord::Schema.define(:version => 20131028145744) do
   create_table "attempts", :force => true do |t|
     t.integer  "challenge_id"
     t.integer  "user_id"
-    t.text     "attempt_text"
-    t.boolean  "passed"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.text     "attempt_text",                    :null => false
+    t.boolean  "passed",       :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "challenges", :force => true do |t|
-    t.string   "name"
-    t.text     "problem_statement"
+    t.string   "name",              :null => false
+    t.text     "problem_statement", :null => false
     t.integer  "challenge_order"
-    t.string   "initial_data"
-    t.string   "expected_output"
+    t.string   "initial_data",      :null => false
+    t.string   "expected_output",   :null => false
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -35,15 +35,15 @@ ActiveRecord::Schema.define(:version => 20131028145744) do
   create_table "docs", :force => true do |t|
     t.integer  "challenge_id"
     t.string   "method"
-    t.xml      "html"
+    t.xml      "html",         :null => false
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "socrates_id"
+    t.integer  "socrates_id", :null => false
     t.string   "name"
-    t.string   "email"
+    t.string   "email",       :null => false
     t.string   "gravatar"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false

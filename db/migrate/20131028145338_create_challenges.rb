@@ -3,7 +3,7 @@ class CreateChallenges < ActiveRecord::Migration
     create_table :challenges do |t|
       t.string :name, null: false
       t.text :problem_statement, null: false
-      t.integer :challenge_order, null: false
+      t.integer :challenge_order
       t.string :initial_data, null: false
       t.string :expected_output, null: false
 

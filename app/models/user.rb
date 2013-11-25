@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def attempts_for(id)
-    attempts.where(:challenge_id => id)
+    attempts.where(:challenge_id => id).order('created_at DESC')
   end
 
   private
