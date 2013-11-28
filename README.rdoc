@@ -3,4 +3,4 @@
 Enumerable tutor is a codeacademy-style tutor app for learning ruby enumerable methods
 
 The project is live, but unfortunately you need to be a Dev Bootcamp student and
-have a socrates account to use it. You can check out the demo (here)[https://vimeo.com/80166108]
+have a socrates account to use it. You can check out the demo here[https://vimeo.com/80166108]
