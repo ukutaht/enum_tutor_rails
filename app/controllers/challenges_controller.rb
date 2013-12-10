@@ -1,11 +1,10 @@
 class ChallengesController < ApplicationController
   include SessionsHelper
-  include ChallengesHelper
-  
+
   before_filter :ensure_user_logged_in
 
   def index
-    @challenges = Challenge.all 
+    @challenges = Challenge.all
   end
 
   def show
@@ -14,17 +13,16 @@ class ChallengesController < ApplicationController
   end
 
   def attempt
-    
     @challenges = Challenge.all
     @challenge = Challenge.find(params[:id])
 
-    @user_output = evaluate(params[:attempt][:attempt_text])
-    params[:attempt][:passed] = @user_output == @challenge.evaluated_output
-    @attempt = current_user.attempts.create(params[:attempt])
-    @challenge.attempts << @attempt
+    current_user.attempts.build(params[:attempt]).tap do |attempt|
+      attempt.passed = SafeRuby.check(params[:attempt][:attempt_text], @challenge.expected_output)
+      attempt.save!
+      @challenge.attempts << attempt
+    end
 
     render 'show'
-
   end
 
   private

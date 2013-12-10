@@ -21,6 +21,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+gem 'safe_ruby', '>= 1.0.0'
 gem 'jquery-rails'
 gem 'nokogiri'
 gem 'coderay'
