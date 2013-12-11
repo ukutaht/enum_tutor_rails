@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   include SessionsHelper
-  
+
   def sign_in
     redirect_to '/auth/dbc'
   end
@@ -12,11 +12,9 @@ class SessionsController < ApplicationController
 
   def auth
     user_attributes = request.env['omniauth.auth'].info
-    session[:user_attributes] = user_attributes
-    token = request.env['omniauth.auth'].credentials
     user = User.from_auth(user_attributes)
-    session[:oauth_token] = token_as_hash(token)
-    
+    session[:user_socrates_id] = user.socrates_id
+
     redirect_to challenges_path
   end
 
