@@ -17,8 +17,11 @@ class ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
 
     current_user.attempts.build(params[:attempt]).tap do |attempt|
-      attempt.passed = SafeRuby.check(params[:attempt][:attempt_text], @challenge.expected_output)
+      @user_output = SafeRuby.eval(params[:attempt][:attempt_text])
+      expected_output = SafeRuby.eval(@challenge.expected_output)
+      attempt.passed = (expected_output == @user_output)
       attempt.save!
+      @attempt = attempt
       @challenge.attempts << attempt
     end
 
