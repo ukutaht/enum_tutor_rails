@@ -11,3 +11,14 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
 end
+
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:dbc] = OmniAuth::AuthHash.new({
+    :provider => 'dbc',
+    :info => {
+      :name => "John Doe",
+      :id => '12345',
+      :email => "hello@example.com"
+    }
+  })
