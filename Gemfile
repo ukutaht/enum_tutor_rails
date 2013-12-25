@@ -20,6 +20,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'rake'
+  gem 'coveralls', require: false
 end
 
 gem 'safe_ruby', '>= 1.0.1'
