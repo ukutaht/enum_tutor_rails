@@ -60,4 +60,19 @@ describe Admin::ChallengesController do
       end
     end
   end
+
+  describe 'edit' do
+    before do
+      @challenge = FactoryGirl.create(:map_challenge)
+      get :edit, id: @challenge.id
+    end
+
+    it 'assigns current challenge' do
+      assigns(:challenge).should eq @challenge
+    end
+
+    it 'renders form' do
+      response.should render_template('form')
+    end
+  end
 end
