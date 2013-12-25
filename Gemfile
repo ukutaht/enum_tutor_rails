@@ -19,6 +19,7 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'rake'
 end
 
 gem 'safe_ruby', '>= 1.0.1'
