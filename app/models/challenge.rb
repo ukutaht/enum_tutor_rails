@@ -8,8 +8,8 @@ class Challenge < ActiveRecord::Base
   validates :problem_statement, presence:true
   validates :initial_data, presence: true
   validates :expected_output, presence: true
-  #validate :check_initial_data
-  #validate :check_expected_output
+  validate :check_initial_data
+  validate :check_expected_output
 
   after_create :init_order
 
@@ -29,7 +29,7 @@ class Challenge < ActiveRecord::Base
 
   def check_initial_data
     begin
-      SafeRuby.eval(initial_data)
+      SafeRuby.eval(initial_data, raise_errors: true)
     rescue => e
       errors.add(:given_data, "doesn't evaluate to a ruby object")
     end
@@ -37,7 +37,7 @@ class Challenge < ActiveRecord::Base
 
   def check_expected_output
     begin
-      SafeRuby.eval(expected_output)
+      SafeRuby.eval(expected_output, raise_errors: true)
     rescue => e
       errors.add(:expected_output, "doesn't evaluate to a ruby object")
     end

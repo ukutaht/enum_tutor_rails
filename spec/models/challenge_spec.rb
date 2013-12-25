@@ -1,5 +1,18 @@
 require 'spec_helper'
 describe Challenge do
+
+  describe 'validations' do
+    it 'checks initial data' do
+      challenge = Challenge.new(FactoryGirl.attributes_for(:challenge_with_invalid_intial_data))
+      challenge.should_not be_valid
+    end
+
+    it 'checks initial data' do
+      challenge = Challenge.new(FactoryGirl.attributes_for(:challenge_with_invalid_expected_output))
+      challenge.should_not be_valid
+    end
+  end
+
   describe 'init order' do
     it 'initializes order based on id by default' do
       challenge = FactoryGirl.create(:map_challenge)
