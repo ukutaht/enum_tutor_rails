@@ -1,6 +1,7 @@
 === Welcome to enumerable tutor
 
 {<img src="https://travis-ci.org/heruku/enum_tutor_rails.png" />}[https://travis-ci.org/heruku/enum_tutor_rails]
+{<img src="https://coveralls.io/repos/heruku/enum_tutor_rails/badge.png?branch=master" alt="Coverage Status" />}[https://coveralls.io/r/heruku/enum_tutor_rails?branch=master]
 
 Enumerable tutor is a codeacademy-style tutor app for learning ruby enumerable methods
 
