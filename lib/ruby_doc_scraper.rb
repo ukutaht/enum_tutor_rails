@@ -33,7 +33,7 @@ class RubyDocScraper
 
   private
 
-  def remove_css(page, selector)
+  def self.remove_css(page, selector)
     page.at_css(selector).remove
   end
 
