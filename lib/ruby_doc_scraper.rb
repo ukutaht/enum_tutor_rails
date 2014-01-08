@@ -3,6 +3,7 @@ require 'open-uri'
 
 class RubyDocScraper
 
+  DOC_PAGE = 'http://ruby-doc.org/core-1.9.3/Enumerable.html'
 
   # Scrapes the ruby docs for a specific method. The argument must be the method
   # name in snakecase eg.
@@ -13,23 +14,31 @@ class RubyDocScraper
 
 
   def self.find_html(method)
-    page = Nokogiri::HTML(open('http://ruby-doc.org/core-1.9.3/Enumerable.html'))
+
     method_div = page.css("##{method}-method")
 
     raise "Method not found from Enumerable docs" if method_div.nil?
 
     # We don't want to display the C source code
 
-    source_div = method_div.at_css(".method-source-code")
-    source_div.remove
+    remove_css(method_div,".method-source-code")
 
     # Or the button to show C source
 
-    toggle_source = method_div.at_css("span.method-click-advice")
-    toggle_source.remove
+    remove_css(method_div,"span.method-click-advice")
 
-    return method_div.to_html
+    method_div.to_html
 
+  end
+
+  private
+
+  def remove_css(page, selector)
+    page.at_css(selector).remove
+  end
+
+  def self.page
+    Nokogiri::HTML(open(DOC_PAGE))
   end
 
 
