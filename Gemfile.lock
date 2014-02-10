@@ -75,6 +75,8 @@ GEM
     hike (1.2.3)
     httpauth (0.2.0)
     i18n (0.6.1)
+    intercom-rails (0.2.24)
+      activesupport (> 3.0)
     journey (1.0.4)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -185,6 +187,7 @@ DEPENDENCIES
   coveralls
   factory_girl_rails
   haml-rails
+  intercom-rails
   jquery-rails
   nokogiri
   oauth2 (~> 0.8.0)
